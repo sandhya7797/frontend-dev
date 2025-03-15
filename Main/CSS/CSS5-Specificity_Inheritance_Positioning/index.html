@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="example.css"/>
+    <style>
+
+        .div-class {
+            color:green;
+        }
+        .main-section {
+            color:orange;
+        }
+        .div-class {
+            color:pink;
+        }
+        h1 {
+            color:red;
+        }
+        h1 {
+            color:yellow;
+        }
+
+
+        /* specificity : 100 */
+        #newDelhi {
+            color:cyan;
+        }
+
+        /* specificity : 2 */
+        ul li {
+            color : blue;
+        }
+
+        /* specificity : 10 */
+        .delhi {
+            color:pink;
+        }
+
+        /* specificity : 110 */
+        .main-section #newDelhi {
+            color : blue;
+        }
+
+        /* specificity : 121 */
+        body .main-section #newDelhi:hover {
+            color : orange;
+        }
+
+        /* Psuedo properties specificity : 11 */
+        li:hover {
+            font-size:24px;
+            color : orange;
+        }
+
+        li {
+            color : yellowgreen !important;
+        }
+
+     </style>
+</head>
+<body>
+    <h1 style="border:inherit; padding:inherit">0</h1>
+    <div class="div-class">1</div>
+    <p>2</p>
+    <section style="color:brown" class="main-section">
+        3
+        <div>4</div>
+        <ul>
+            <li class="delhi" id="newDelhi">Delhi</li>
+            <li>Bangalore</li>
+            <li>Goa</li>
+            <li>WB</li>
+        </ul>
+    </section>
+</body>
+</html>

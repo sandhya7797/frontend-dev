@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    label {
+        display : inline-block;
+        width : 100px;
+    }
+
+    div {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    /* Attribute Selector */
+    input[type="email"] {
+        border-color:red;
+    }
+
+    input::placeholder {
+        color : blue;
+    }
+
+</style>
+<body>
+    <form method="post">
+        <!-- Name -->
+        <div>
+            <label for="name">Fullname:</label>
+            <input type="text" id="name" placeholder="enter full name"  name="name">
+        </div>
+
+        <!-- email -->
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="enter email id" name="email">
+        </div>
+
+        <!-- phone -->
+        <div>
+            <label for="num">Contact:</label>
+            <input type="number" id="num" placeholder="enter your mobile number" name="phone">
+        </div>
+
+        <!-- degree -->
+        <div>
+            <label for="deg">Choose degree:</label>
+            <select name="deg">
+                <option>----</option>
+                <option value="id1">B.Tech</option>
+                <option value="id2">BSC</option>
+                <option value="id3">BA</option>
+            </select>
+        </div>
+
+        <!-- dob -->
+        <div>
+            <label>DOB:</label>
+            <input type="date" name="dob">
+        </div>
+
+        <!-- gender, name attribute groups the radio buttons and allows only one option to select at a time -->
+        <div>
+            <label>Gender</label>
+            <input type="radio" name="gender" value="m" name="m">
+            <span>Male</span>
+            <input type="radio" name="gender" value="f" name="f">
+            <span>Female</span>
+        </div>
+
+        <!-- Course slot -->
+        <div>
+            <label>Select Slot</label>
+            <input type="checkbox" value="m" name="slot">
+            <span>Morning</span>
+            <input type="checkbox" value="e" name="slot">
+            <span>Evening</span>
+            <input type="checkbox" value="n" name="slot">
+            <span>Night</span>
+        </div>
+
+        <!-- profile photo -->
+        <div>
+            <label>Upload Photo</label>
+            <input type="file" accept=".jpg,.pdf" name="photo">
+        </div>
+
+        <!-- summary -->
+        <div>
+            <label>Query:</label>
+            <textarea name="intro"></textarea>
+        </div>
+
+        <!-- submit -->
+        <button>Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+    padding : 5px;
+    border : 1px solid #ccc;
+}
+
+body {
+    color : red;
+    border : 1px solid green;
+}
+
+.main-section {
+    color : blue;
+}
+

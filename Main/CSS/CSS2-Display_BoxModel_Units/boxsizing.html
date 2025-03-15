@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        .box {
+            border: 1px solid red;
+            width:30%;
+            height:200px;
+            display:inline-block;
+            padding:10px;
+            border-width: 20px;
+            /* box sizing is very powerful it controls the final size of box even if we change padding or border or width */
+            box-sizing:border-box;
+        }
+    </style>
+<body>
+    <div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+</body>
+</html>
