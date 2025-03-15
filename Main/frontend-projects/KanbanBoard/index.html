@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin : 0px;
+            padding : 0px;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: dimgrey;
+            height : 60px;
+            width : 100%;
+            display : flex;
+        }
+
+        .priorities {
+            background-color: rgb(61, 61, 61);
+            display : flex;
+            justify-content: space-around;
+            height : 40px;
+            width : 200px;
+            padding : 5px 5px 5px 5px;
+            margin : 10px 0px 10px 40px;
+            cursor: pointer;
+        }
+
+        .priorities .box {
+            height : 25px;
+            width : 40px;
+            margin : 2px;
+        }
+
+        .priorities .box:hover {
+            border: 1px solid white;
+        }
+
+        .priorities .box.p1 {
+            background-color: pink;
+        }
+
+        .priorities .box.p2{
+            background-color: greenyellow;
+        }
+
+        .priorities .box.p3 {
+            background-color: lightsteelblue;
+        }
+
+        .priorities .box.p4 {
+            background-color: black;
+        }
+
+        .actions {
+            background-color:  rgb(61, 61, 61);
+            height : 40px;
+            width : 80px;
+            margin : 10px 0px 5px 30px;
+            cursor: pointer;
+            display : flex;
+            justify-content: center;
+            align-items: center;
+            padding : 10px;
+            column-gap: 10px;
+        }
+
+        .actions .box {
+            font-size: 33px;
+            color : white;
+            height : 40px;
+            width : 40px;
+        }
+
+        .search {
+            background-color: white;
+            display : flex;
+            height : 40px;
+            margin : 10px 0px 5px 30px;
+        }
+
+        .search input {
+            font-size : 18px;
+            padding : 5px;
+        }
+
+        .search input:hover {
+            border : 1px solid rgb(44, 215, 238);
+        }
+
+        .heading {
+            padding : 30px;
+        }
+
+        .task-section {
+            display : flex;
+            padding : 30px;
+            column-gap: 30px;
+            row-gap : 30px;
+            flex-wrap : wrap;/* this will allow the tasks to wrap (move to next line without impacting existing tasks) when they reach the end of the container */
+        }
+
+        .task-section .task {
+            height : 200px;
+            width : 200px;
+            border : 1px solid black;
+            display : flex;
+            flex-direction: column;
+        }
+
+        .task-section .task .task-priority {
+            height : 15px;
+            background-color: pink;
+        }
+
+        .task-section .task .task-id {
+            height : 22px;
+            background-color: yellow;
+            padding-left : 10px;
+        }
+
+        .task-section .task .task-title {
+            background-color: lightseagreen;
+            flex-grow:1;
+            padding : 10px;
+        }
+
+        .task-model {
+            height : 300px;
+            width : 600px;
+            background-color: #ccc;
+            display : flex;
+            position : absolute;/* this brings task model element on different layer from the layer where all elements resides */
+            left : 50%;
+            right : 50%;
+            transform : translate(-50%, -50%); /* this will bring the element to the center of the screen */
+            border-radius: 10px;
+        }
+
+        .task-model .left-section {
+            display : flex;
+            flex-grow : 1
+        }
+
+        .task-model .left-section textarea {
+            display: flex;
+            flex-grow : 1
+        }
+
+        .task-model .right-section {
+            width : 120px;
+            row-gap: 10px;
+            display : flex;
+            flex-direction: column;
+            padding : 10px;
+        }
+
+        .task-model .right-section .box {
+            height : 50px;
+            width : 100px;
+        }
+
+        .task-model .right-section .box.p1 {
+            background-color: pink;
+        }
+
+        .task-model .right-section .box.p2 {
+            background-color: yellow;
+        } 
+
+        .task-model .right-section .box.p3 {
+            background-color: lightsteelblue;
+        } 
+
+        .task-model .right-section .box.p4{
+            background-color: black;
+        } 
+
+        .hide {
+            display : none;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="priorities">
+            <div class="p1 box"></div>
+            <div class="p2 box"></div>
+            <div class="p3 box"></div>
+            <div class="p4 box"></div>
+        </div>
+        <div class="actions">
+            <div class="add box">+</div>
+            <div class="edit box">x</div>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search title or id"/>
+        </div>
+    </header>
+    <main>
+        <h1 class="heading">Kanban Board</h1>
+        <div class="task-section"></div>
+        <div class="task-model hide">
+            <div class="left-section">
+                <textarea placeholder="Enter new task title here..."></textarea>
+            </div>
+            <div class="right-section">
+                <div class="box p1"></div>
+                <div class="box p2"></div>
+                <div class="box p3"></div>
+                <div class="box p4"></div>
+            </div>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>

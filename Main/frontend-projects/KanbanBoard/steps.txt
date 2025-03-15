@@ -1,0 +1,6 @@
+1. First create header structure and formatting using html and css.
+2. Create single static task using html and css. This task has to create multiple times dynamically based on some condition so put it inside js file. Understand createTask() metho.
+3. Now we have to create static task model dialogue box using html and css when we click on '+' and it has to always place on center and it should not disturb other tags that are on the same page.(Task Model should be on different Layer)
+4. We just need one Task Model and that has to visible and hide we have to implement this functionality when we click on + it should show dialogue box and again click disappear.
+5. After entering text inside Task Model and clicking on enter it should create new task and diague box should disaapear automatically, for new diakogue box value should get reset, make sure new tasks when
+added actual shape is not screwed up (use wrap).
