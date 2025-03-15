@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input id="input" type="text" placeholder="enter your name"/>
+        <button id="button">Login</button>
+    </div>
+    <div id="preview"></div>
+
+    <script>
+
+        /* write your code here */
+
+        const inputRef = document.getElementById('input');
+
+        /* when enter is pressed on the keyboard then only show final preview value*/
+        inputRef.addEventListener('keyup', function(e) {
+            const previewRef = document.getElementById('preview');
+            if (e.target.value === '') {
+                previewRef.innerText = '';
+            }
+            if(e.key === "Enter") {
+                previewRef.innerText = e.target.value;
+            }
+        });
+
+        /* when button is clicked show final value on the console */
+        const buttonRef = document.getElementById('button');
+        buttonRef.addEventListener('click', function(e) {
+            console.log(inputRef.value);
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!-- Guess Game -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuessGame</title>
+    <style>
+
+        .card {
+            height : 10rem;
+            width : 10rem;
+            margin : 2rem;
+            border : 1px solid black;
+        }
+
+        * {
+            box-sizing: border-box;
+            background-color: bisque;
+        }
+
+        .wrapper {
+            display : flex;
+            flex-wrap : wrap;
+            justify-content: space-around;
+            padding-top: 5rem;
+        }
+
+        .blue {
+            background-color: blue;
+            box-shadow: 0px 0px 6px 5px;
+        }
+
+        .green {
+            background-color: green;
+            box-shadow: 0px 0px 6px 5px;
+            }
+
+        .red {
+            background-color: red;
+            box-shadow: 0px 0px 6px 5px;
+        }
+        .footer {
+            display : flex;
+            justify-content: center;
+            margin : 8rem;
+        }
+
+        #button {
+            height : 2rem;
+            width:5rem;
+            background-color: red;
+            color : white;
+        }
+
+        html, body {
+            margin : 0;
+            padding : 0;
+        }
+
+        h1 {
+            background-color: aquamarine;
+            text-align: center;
+            margin : 0;
+            padding : 2rem;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guess Game</h1>
+    </header>
+    <main>
+        <div class="wrapper">
+            <div class="card" data-color="green"></div>
+            <div class="card" data-color="red"></div>
+            <div class="card" data-color="blue"></div>
+            <div class="card" data-color="red"></div>
+            <div class="card" data-color="blue"></div>
+            <div class="card" data-color="green"></div>
+            <div class="card" data-color="green"></div>
+            <div class="card" data-color="blue"></div>
+            <div class="card" data-color="red"></div>
+            <div class="card" data-color="blue"></div>
+        </div>
+    </main>
+    <footer class="footer">
+        <button id="button">Start Over</button>
+    </footer>
+
+    <script>
+
+        /* Add color to the target*/
+        const cardsRef = document.querySelectorAll('.card');
+        cardsRef.forEach(function(cardRef) {
+            cardRef.addEventListener('click', function(e) {
+                addColorToTarget(e);
+            })
+        });
+
+        /* Game - Start Over */
+        const buttonRef = document.getElementById('button');
+        buttonRef.addEventListener('click', function() {
+            removeColors();
+        })
+
+        function addColorToTarget(e) {
+            const colorClass = e.target.dataset.color;
+            e.target.classList.add(colorClass);
+        }
+
+        function removeColors(cnt) {
+            const cardsRef = document.querySelectorAll('.card');
+            let allCardsClicked = true;
+
+            cardsRef.forEach(function(cardRef) {
+                if(cardRef.classList.length==1) {
+                    allCardsClicked = false;
+                }
+            });
+
+            if(allCardsClicked) {
+                cardsRef.forEach(function(cardRef) {
+                    const colors = ['red','green','blue'];
+                    colors.forEach(function(color) {
+                        cardRef.classList.remove(color);
+                    });
+                });
+            } else {
+                window.alert('Finish the Game!');
+            }
+        }
+        
+    </script>
+</body>
+</html>

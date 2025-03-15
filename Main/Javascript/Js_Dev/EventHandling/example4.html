@@ -1,0 +1,40 @@
+<!-- In the multiplication form whenever you change num from either of num1 or num2 res should get updated and shown-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Multiplication Form</h2>
+        <input type="number" id="num1" value="3"/>
+        x
+        <input type="number" id="num2" value="2"/>
+        =
+        <span id="result">6</span>
+    </div>
+
+    <!-- code goes here -->
+
+    <script>
+        const num1Ref = document.getElementById('num1');
+        const num2Ref = document.getElementById('num2');
+        const resRef = document.getElementById('result');
+
+        function Multiplication() {
+            resRef.innerText=num1Ref.value * num2Ref.value;
+        }
+
+        num1Ref.addEventListener('change', function() {
+            Multiplication();
+        })
+
+        num2Ref.addEventListener('change', function() {
+            Multiplication();
+        })
+
+    </script>
+</body>
+</html>

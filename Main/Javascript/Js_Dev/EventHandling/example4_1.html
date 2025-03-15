@@ -1,0 +1,40 @@
+<!-- In the Addition form whenever you change num from either of num1 or num2 res should get updated and shown-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Addition Form</h2>
+        <input type="number" id="num1" value="3"/>
+        +
+        <input type="number" id="num2" value="2"/>
+        =
+        <span id="result">6</span>
+    </div>
+
+    <!-- code goes here -->
+
+    <script>
+        const num1Ref = document.getElementById('num1');
+        const num2Ref = document.getElementById('num2');
+        const resRef = document.getElementById('result');
+
+        function Addition() {
+            resRef.innerText=+num1Ref.value + +num2Ref.value;/* explicit casting */
+        }
+
+        num1Ref.addEventListener('change', function() {
+            Addition();
+        })
+
+        num2Ref.addEventListener('change', function() {
+            Addition();
+        })
+
+    </script>
+</body>
+</html>
