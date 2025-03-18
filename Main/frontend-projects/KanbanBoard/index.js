@@ -4,6 +4,7 @@ const taskModelRef = document.querySelector('.task-model');
 const inputTextAreaRef = document.querySelector('.task-model .left-section textarea');
 const prioritySelectionRefs = document.querySelectorAll('.task-model .right-section .box');
 const editButtonRef = document.querySelector('.actions .edit.box');
+const filterBoxesRef = document.querySelectorAll('.filter .box');
 
 /* Task Creation */
 function createTask(id,selectedPriority,title) {
@@ -70,14 +71,14 @@ inputTextAreaRef.addEventListener('keyup', function(e) {
 /* Functionality to add priority color selection during task creation */
 prioritySelectionRefs.forEach(function(prioritySelectionRef) {
     prioritySelectionRef.addEventListener('click', function(e) {
-        resetPrioritySelection();
+        removeSelectedState(prioritySelectionRefs);
         prioritySelectionRef.classList.add('selected');
     });
 });
 
-function resetPrioritySelection() {
-    prioritySelectionRefs.forEach(function(prioritySelectionRef) {
-        prioritySelectionRef.classList.remove('selected');
+function removeSelectedState(boxesRef) {
+    boxesRef.forEach(function(boxRef) {
+        boxRef.classList.remove('selected');
     });
 }
 
@@ -99,3 +100,29 @@ editButtonRef.addEventListener('click', function(e) {
         taskSectionRef_new.classList.remove('non-editable');
     }
 });
+
+
+/* Functionality to filter tasks based on priority */
+filterBoxesRef.forEach(function(filterBoxRef) {
+    filterBoxRef.addEventListener('click',function(e) {
+        removeSelectedState(filterBoxesRef);
+        e.target.classList.add('selected');
+        const sp = e.target.dataset.color;
+        console.log(sp);
+        showFilteredTasks(sp);
+    });
+});
+
+function showFilteredTasks(selectedPriority) {
+    const tpRefs = document.querySelectorAll('.task .task-priority');
+    tpRefs.forEach(function(tpRef) {
+        console.log(tpRef.dataset.priority);
+        if(tpRef.dataset.priority !== selectedPriority) {
+            tpRef.closest('.task').style.display = 'none';
+        } else {    
+            tpRef.closest('.task').style.display = 'flex';
+        }
+    });
+}
+
+

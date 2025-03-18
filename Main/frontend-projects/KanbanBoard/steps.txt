@@ -17,4 +17,8 @@ v. edit text.
 vi. delete task.
 vii. enable/disable editing
 
+filtering, sorting and searching -
+
+
+
 

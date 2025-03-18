@@ -19,7 +19,7 @@
             display : flex;
         }
 
-        .priorities {
+        .filter {
             background-color: rgb(61, 61, 61);
             display : flex;
             justify-content: space-around;
@@ -30,29 +30,33 @@
             cursor: pointer;
         }
 
-        .priorities .box {
+        .filter .box {
             height : 25px;
             width : 40px;
             margin : 2px;
         }
 
-        .priorities .box:hover {
+        .filter .box.selected {
+            border: 2px solid red;
+        }
+
+        .filter .box:hover {
             border: 1px solid white;
         }
 
-        .priorities .box.p1 {
+        .filter .box.p1 {
             background-color: pink;
         }
 
-        .priorities .box.p2{
+        .filter .box.p2{
             background-color: yellow;
         }
 
-        .priorities .box.p3 {
+        .filter .box.p3 {
             background-color: lightsteelblue;
         }
 
-        .priorities .box.p4 {
+        .filter .box.p4 {
             background-color: black;
         }
 
@@ -239,11 +243,11 @@
 </head>
 <body>
     <header>
-        <div class="priorities">
-            <div class="p1 box"></div>
-            <div class="p2 box"></div>
-            <div class="p3 box"></div>
-            <div class="p4 box"></div>
+        <div class="filter">
+            <div class="p1 box" data-color="p1"></div>
+            <div class="p2 box" data-color="p2"></div>
+            <div class="p3 box" data-color="p3"></div>
+            <div class="p4 box" data-color="p4"></div>
         </div>
         <div class="actions">
             <div class="add box">+</div>
