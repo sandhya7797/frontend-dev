@@ -5,6 +5,7 @@ const inputTextAreaRef = document.querySelector('.task-model .left-section texta
 const prioritySelectionRefs = document.querySelectorAll('.task-model .right-section .box');
 const editButtonRef = document.querySelector('.actions .edit.box');
 const filterBoxesRef = document.querySelectorAll('.filter .box');
+const inputRef = document.querySelector('.search input');
 
 /* Task Creation */
 function createTask(id,selectedPriority,title) {
@@ -116,7 +117,6 @@ filterBoxesRef.forEach(function(filterBoxRef) {
 function showFilteredTasks(selectedPriority) {
     const tpRefs = document.querySelectorAll('.task .task-priority');
     tpRefs.forEach(function(tpRef) {
-        console.log(tpRef.dataset.priority);
         if(tpRef.dataset.priority !== selectedPriority) {
             tpRef.closest('.task').style.display = 'none';
         } else {    
@@ -124,5 +124,25 @@ function showFilteredTasks(selectedPriority) {
         }
     });
 }
+
+function showSearchedTasks(searchInput) {
+    const taskRefs = document.querySelectorAll('.task');
+    taskRefs.forEach(function(taskRef) {
+        const taskIdRef = taskRef.querySelector('.task-id');
+        const taskTitleRef = taskRef.querySelector('.task-title span');
+        if(taskIdRef.innerText.includes(searchInput) || taskTitleRef.innerText.includes(searchInput)) {
+            taskIdRef.closest('.task').style.display = 'flex';
+        } else {    
+            taskIdRef.closest('.task').style.display = 'none';
+        }
+    });
+}
+
+
+/* Functionality to search tasks based on title or id */
+inputRef.addEventListener('keyup', function(e) {
+    const searchInput = e.target.value;
+    showSearchedTasks(searchInput);
+});
 
 
