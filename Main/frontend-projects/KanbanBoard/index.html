@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
     <style>
         * {
             margin : 0px;
@@ -44,7 +45,7 @@
         }
 
         .priorities .box.p2{
-            background-color: greenyellow;
+            background-color: yellow;
         }
 
         .priorities .box.p3 {
@@ -73,6 +74,14 @@
             color : white;
             height : 40px;
             width : 40px;
+        }
+
+        .actions .edit.box:hover {
+            background-color: green;
+        }
+
+        .actions .edit.box.selected {
+            color : red;
         }
 
         .search {
@@ -118,14 +127,24 @@
 
         .task-section .task .task-id {
             height : 22px;
-            background-color: yellow;
+            background-color: mediumslateblue;
             padding-left : 10px;
+            color : white;
         }
 
         .task-section .task .task-title {
             background-color: lightseagreen;
             flex-grow:1;
             padding : 10px;
+            cursor : pointer;
+            position : relative;
+        }
+
+        .task-section .task .task-title .task-remove {
+            position : absolute;
+            right : 10px;
+            bottom : 10px;
+            cursor : pointer;
         }
 
         .task-model {
@@ -183,6 +202,39 @@
             display : none;
         }
 
+        .task-model .right-section .box:hover {
+            border: 1px solid white;
+        }
+
+        .task-model .right-section .box.selected {
+            border: 2px solid red !important;
+        }
+
+        .task-section .task .task-priority[data-priority="p1"] {
+            background-color: pink;
+        }
+
+        .task-section .task .task-priority[data-priority="p2"] {
+            background-color: yellow;
+        }
+
+        .task-section .task .task-priority[data-priority="p3"] {
+            background-color: lightsteelblue;
+        }
+
+        .task-section .task .task-priority[data-priority="p4"] {
+            background-color: black;
+        }
+
+        .task-section.non-editable .task-remove {
+            display : none;
+        }
+
+        .task-section.non-editable .task-priority {
+            pointer-events: none;
+        }
+
+
     </style>
 </head>
 <body>
@@ -203,16 +255,16 @@
     </header>
     <main>
         <h1 class="heading">Kanban Board</h1>
-        <div class="task-section"></div>
+        <div class="task-section non-editable"></div>
         <div class="task-model hide">
             <div class="left-section">
                 <textarea placeholder="Enter new task title here..."></textarea>
             </div>
             <div class="right-section">
-                <div class="box p1"></div>
-                <div class="box p2"></div>
-                <div class="box p3"></div>
-                <div class="box p4"></div>
+                <div class="box p1" data-priority="p1"></div>
+                <div class="box p2" data-priority="p2"></div>
+                <div class="box p3" data-priority="p3"></div>
+                <div class="box p4" data-priority="p4"></div>
             </div>
         </div>
     </main>

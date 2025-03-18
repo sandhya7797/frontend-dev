@@ -4,3 +4,17 @@
 4. We just need one Task Model and that has to visible and hide we have to implement this functionality when we click on + it should show dialogue box and again click disappear.
 5. After entering text inside Task Model and clicking on enter it should create new task and diague box should disaapear automatically, for new diakogue box value should get reset, make sure new tasks when
 added actual shape is not screwed up (use wrap).
+
+DOM Manipulation -
+
+6 -> Now we have to add priority to the new task by selecting the color box.
+
+i.we must implement functionality in such a way that when user selects the priority color box it should apply red color border to that particular box only not others.
+ii. now we have to get data-priority info from that clicked box and then dynamically add data-priority attribute to task-priority class.
+iii. generate id dynamically.
+iv. priority change by clicking.
+v. edit text.
+vi. delete task.
+vii. enable/disable editing
+
+
