@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            min-width : 200px;
+            min-height : 200px;
+            padding : 10px;
+        }
+        .grandParent {
+            border : 1px solid red;
+        }
+        .parent {
+            border : 1px solid green;
+        }
+        .child {
+            border : 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="grandParent">
+        Grand Parent
+        <div class="parent">
+            Parent
+            <div class="child">
+                Child
+            </div>
+        </div>
+    </div>
+    <script>
+        const grandParentRef = document.querySelector('.grandParent');
+        const parentRef = document.querySelector('.parent');
+        const childRef = document.querySelector('.child');
+
+        childRef.addEventListener('click', (e) => {
+            window.alert('Child is clicked');
+        });
+
+        parentRef.addEventListener('mouseover', (e) => {
+            window.alert('Parent is mouseovered');
+        });
+
+        grandParentRef.addEventListener('mouseover', (e) => {
+            window.alert('Grand Parent mouseover');
+        });
+
+        document.addEventListener('mouseover', (e) => {
+            window.alert('Document is mouseovered');
+        });
+        
+    </script>
+</body>
+</html>
