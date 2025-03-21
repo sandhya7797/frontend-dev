@@ -1,4 +1,5 @@
 const starRefs = document.querySelectorAll('.star');
+const starRatingRef = document.querySelector('.star-rating');
 let last_selected_starIdx = 0;
 /*
 1. on click we have to select current and previous all stars.
@@ -18,42 +19,41 @@ function deSelectStar(ref) {
     ref.classList.add('fa-regular');
 }
 
-starRefs.forEach((star) => {
-    star.addEventListener('click', function(e) {
+function handleStarSelection(currentIndex) {
+    for(let i=0;i<starRefs.length;i++) {
+        if(i<currentIndex) {
+            selectStar(starRefs[i].querySelector('i'));
+        } else {
+            deSelectStar(starRefs[i].querySelector('i'));
+        }
+    }
+}
+
+starRatingRef.addEventListener('click', function(e) {
+    if(e.target.classList.contains('fa-star')) {
+        console.log('star wrapper clicked');
         const selectedIdx = Number(e.target.dataset.index);
         last_selected_starIdx = selectedIdx;
-        for(let i=0;i<starRefs.length;i++) {
-            if(i<selectedIdx) {
-                selectStar(starRefs[i].querySelector('i'));
-            } else {
-                deSelectStar(starRefs[i].querySelector('i'));
-            }
-        }
-    });
-
-    star.addEventListener('mouseover', function(e) {
-        const selectedIdx = Number(e.target.dataset.index);
-        for(let i=0;i<starRefs.length;i++) {
-            if(i<selectedIdx) {
-                selectStar(starRefs[i].querySelector('i'));
-            } else {
-                deSelectStar(starRefs[i].querySelector('i'));
-            }
-        }
-    });
-
-    star.addEventListener('mouseleave', function(e) {
-        starRefs.forEach((ref,idx) => {
-            if(idx>last_selected_starIdx-1) {
-                deSelectStar(ref.querySelector('i'));
-            } else {
-                selectStar(ref.querySelector('i'));
-            }
-        });
-    });
-
-    
+        const span = document.querySelector('.container h1');
+        span.innerText = `Star Rating : ${last_selected_starIdx}`;
+        handleStarSelection(selectedIdx);
+    }
 });
+
+starRatingRef.addEventListener('mouseover', function(e) {
+    if(e.target.classList.contains('fa-star')) {
+        const selectedIdx = Number(e.target.dataset.index);
+        handleStarSelection(selectedIdx);
+    }
+});
+
+starRatingRef.addEventListener('mouseleave', function(e) {
+    if(e.target.classList.contains('fa-star')) {
+        handleStarSelection(last_selected_starIdx);
+    }
+});
+
+
 
 
 
