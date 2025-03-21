@@ -42,6 +42,7 @@ function createTask(id,selectedPriority,title) {
     });
 }
 
+
 /* Functionality to toggle Task Model 'Visible' & 'Hide' */
 addActionRef.addEventListener('click', function() {
     const isHidden = taskModelRef.classList.contains('hide');

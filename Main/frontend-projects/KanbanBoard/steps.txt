@@ -19,6 +19,8 @@ vii. enable/disable editing
 
 filtering, sorting and searching -
 
+Instead of directly playing with DOM elements we can also work using source of truth with JSON.
+
 
 
 
