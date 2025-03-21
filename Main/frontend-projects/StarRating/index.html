@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
     <style>
         .star {
             height : 20px;
             width : 20px;
             font-size: 20px;
             color : #a59e9e;
+        }
+        .star .fa-solid {
+            color : gold;
         }
         .container {
             display : flex;
@@ -32,12 +36,13 @@
     <div class="container">
         <h1>Star Rating</h1>
         <div class="star-rating">
-            <div class="star"><i class="fa-regular fa-star"></i></div>
-            <div class="star"><i class="fa-regular fa-star"></i></div>
-            <div class="star"><i class="fa-regular fa-star"></i></div>
-            <div class="star"><i class="fa-regular fa-star"></i></div>
-            <div class="star"><i class="fa-regular fa-star"></i></div>
+            <div class="star"><i class="fa-regular fa-star" data-index="1"></i></div>
+            <div class="star"><i class="fa-regular fa-star" data-index="2"></i></div>
+            <div class="star"><i class="fa-regular fa-star" data-index="3"></i></div>
+            <div class="star"><i class="fa-regular fa-star" data-index="4"></i></div>
+            <div class="star"><i class="fa-regular fa-star" data-index="5"></i></div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
