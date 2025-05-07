@@ -1,17 +1,16 @@
-const todoList = (props) => {
-    const items = ["item1","item2","item3","item4","item5"];
+const todoList = ({ title, items, myStyles }) => {
     return (
-    <div>
-      <h1>Todo-List</h1>
-      <ul>
-        {
-          items.map((item) => (
-            <li>{item}</li>
-          ))
-        }
-      </ul>
-    </div>
-  )
+        <div>
+            <h1>{title ? title : "TodoList"}</h1>
+            <ul style={myStyles}>
+                {
+                    items.map((item) => (
+                        <li>{item}</li>
+                    ))
+                }
+            </ul>
+        </div>
+    )
 }
 
 export default todoList;
