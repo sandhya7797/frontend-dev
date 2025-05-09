@@ -1,13 +1,20 @@
 import '../App.css';
+import { Link } from 'react-router';
 
 const Header = () => {
     return  (
         <div className="header">
             <h1>IMDB</h1>
             <ul>
-                <li><a href="/">MovieList</a></li>
-                <li><a href="/details">MovieDetails</a></li>
-                <li><a href="/watchlist">WatchList</a></li>
+                <li>
+                    <Link to="/">MovieList</Link>
+                </li>
+                <li>
+                    <Link to="/details">MovieDetails</Link>
+                </li>
+                <li>
+                    <Link to="/watchList">WatchList</Link>
+                </li>
             </ul>
         </div>
     );
