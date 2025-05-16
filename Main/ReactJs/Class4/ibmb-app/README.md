@@ -1,12 +1,36 @@
-# React + Vite
+# IMDB App - React Router Client Side Rendering
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Agenda
 
-Currently, two official plugins are available:
+Design an IMDB-style app using React Router for client-side rendering.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Steps
 
-## Expanding the ESLint configuration
+1. **Identify Pages:**  
+   List all required pages and create a separate `.jsx` file for each.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. **Set Up Routing:**  
+   Define routes for each page in `main.jsx` using React Router.
+
+3. **Common Header:**  
+   Create a common `Header` component and display it above all routes.
+
+---
+
+### Design Movie List Page
+
+4. **Component Structure:**  
+   Identify and create the necessary components for the movie list page:  
+   - `Movie`  
+   - `MovieList`
+
+5. **Styling:**  
+   Add basic CSS for both components and the `MovieListPage` in `App.css`.  
+   > **Note:** Ensure all input details and paths are correct. For movie posters, prepend the correct base URL to the poster path.
+
+6. **API Integration:**  
+   Fetch movies by making an API call from `MovieListPage`.
+
+7. **Pagination:**
+
+---
