@@ -57,3 +57,32 @@
 .header ul li {
   list-style: none;
 }
+
+.header ul li a {
+  color: black;
+}
+
+.movie-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 20px;
+  padding : 0px;
+  margin: 0px;
+}
+
+.movie {
+  display : flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.movie-list-page {
+  padding : 10px 30px;
+}
+
+
+
