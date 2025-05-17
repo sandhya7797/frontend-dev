@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../App.css";
 const Pagination = ({fetchMovies})=> {
-    const [list, setList] = useState([1,2,3,4,5]);
-    const [selectedPage, setSelectedPage] = useState(1);
+    const [pages, setpages] = useState([1,2,3,4,5]);
+    const [selectedPage, setSelectedPage] = useState(pages[0]);
 
     const handleClick = (pageNo) => {
         fetchMovies(pageNo);
@@ -11,15 +11,15 @@ const Pagination = ({fetchMovies})=> {
 
     return (
         <div className="pagination-section">
-            <button>&lt;</button>
+            <button onClick={()=>handleClick(selectedPage-1)} disabled={selectedPage == pages[0]}>&lt;</button>
             {
-                list.map((page, index) => (
+                pages.map((page, index) => (
                     <button className={selectedPage==page?'active':''}onClick={()=>handleClick(page)}>
                         {page}
                     </button>
                 ))
             }
-            <button>&gt;</button>
+            <button onClick={()=>handleClick(selectedPage+1)} disabled={selectedPage == pages[pages.length-1]}>&gt;</button>
         </div>
     );
 }
