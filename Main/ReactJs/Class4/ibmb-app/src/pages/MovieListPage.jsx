@@ -5,11 +5,14 @@ import Pagination from "../components/Pagination";
 
 const MovieListPage = () => {
     const [movies, setMovies] = useState([]);
+    const [totalPages, setTotalPages] = useState(0);
 
     const fetchMovies = (pageNo) => {
             fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=${pageNo}`)
             .then((response) => response.json())
-            .then((data) => setMovies(data.results))
+            .then((data) => {
+                setMovies(data.results);
+                setTotalPages(data.total_pages) })
             .catch((error) => console.error("Error fetching movies:", error));
     }
 
@@ -22,7 +25,7 @@ const MovieListPage = () => {
     return (
         <div className="movie-list-page">
             <MovieList movies={movies} />
-            <Pagination fetchMovies={fetchMovies}/>
+            <Pagination fetchMovies={fetchMovies} totalPages={totalPages}/>
         </div>
     );
 }

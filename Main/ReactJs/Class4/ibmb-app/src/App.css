@@ -78,7 +78,10 @@
   width: 200px;
   border-radius: 10px;
   overflow: hidden;
+  text-align:center;
+  margin : 2px 0;
 }
+
 
 .movie-list-page {
   padding : 10px 30px;
