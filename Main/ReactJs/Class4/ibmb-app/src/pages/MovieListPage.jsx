@@ -12,7 +12,7 @@ const MovieListPage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setMovies(data.results);
-                setTotalPages(data.total_pages) })
+                setTotalPages(data.total_pages)})
             .catch((error) => console.error("Error fetching movies:", error));
     }
 
@@ -25,7 +25,7 @@ const MovieListPage = () => {
     return (
         <div className="movie-list-page">
             <MovieList movies={movies} />
-            <Pagination fetchMovies={fetchMovies} totalPages={totalPages}/>
+            <Pagination fetchMovies={fetchMovies} totalPages={20}/>
         </div>
     );
 }
