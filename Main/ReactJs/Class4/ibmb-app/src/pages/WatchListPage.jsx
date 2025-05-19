@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import '../App.css';
 
+//Note : here watchlist is just used to copy the data from the watchList to the list and we are dispalying results of search data by iterating over the list (local copy of WatchListPage) and not the watchList directly.
+
 const genresIds = {
     28: 'Action',
     12: 'Adventure',
@@ -23,43 +25,67 @@ const genresIds = {
     37: 'Western',
 };
 
-//Note : watchlist is just used to copy the data from the watchList to the list and we are dispalying results of search data by iterating over the list (local copy of watchList) and not the watchList directly.
-
 const WatchList = ({ watchList, setWatchList }) => {
-    const [list, setList] = useState([]);
+    const [list, setList] = useState([]);//local copy of watchList to display the results of search,sort or filtered data
 
-    // remove the movie from the watchList
+    // Remove movie from watchlist
     const handleRemoveFromWatchList = (id) => {
         const updatedWatchList = watchList.filter((movie) => movie.id !== id);
         setWatchList(updatedWatchList);
     }
 
-    // handle the search input and filter the movies based on the title
-    // here watchlist is source of truth and we are maintainting the search state in the list
-    // this method will handle the search input when user types in the search box as well as when the user clears the search box
+    // Searching - Handles search input and filters movies by title; watchList is the source of truth and list holds the filtered state for both typing and clearing the search box.
     const handleMovieSearch = (e) => {
         const newList = Object.values(watchList).filter((movie) => (movie.movie.title.toLowerCase().includes(e.target.value.toLowerCase())));
         setList(newList);
     }
 
-    // for the first time when component mounts we should show all the movies in the watchList
-    // so we will set the list to the watchList 
+    // On initial mount, set the list to show all movies from the watchList. It also updates the list whenever the watchList changes.
     useEffect(() => {
         setList(Object.values(watchList));
-    },[watchList]);
+    }, [watchList]);
 
+    //Sorting - Handles sorting of movies by popularity in ascending or descending order.
     const handleSorting = (type) => {
         const sortedList = Object.values(watchList).sort((a, b) => type === 'ASC' ? a.movie.popularity - b.movie.popularity : b.movie.popularity - a.movie.popularity);
         setList(sortedList);
     }
 
+    // Genre Filter - It creates a unique list of genres from the watchList.
+    const selectedMoviesGenre = () => {
+        const selectedGenres = Object.values(watchList).map((movie) => movie.movie.genre_ids).flat();
+        return [...new Set(selectedGenres)];
+    }
+
+    // Filter movies by genre. It filters the list based on the selected genre id. If no genre is selected, it shows all movies.
+    const handleGenreFilter = (genreId) => {
+        const filteredList = Object.values(watchList).filter(genreId ? (movie) => movie.movie.genre_ids.includes(parseInt(genreId)) : (movie) => true);
+        setList(filteredList);
+    }
+
     return (
         <div>
-            <h2>Watch List</h2>
             <div className="container">
-                <div className="left-section"></div>
+                <div className="left-section">
+                    <div className="genre-section">
+                        <ul>
+                            <h2>Genre</h2>
+                            <li>
+                                <input type="checkbox" onClick={() => handleGenreFilter()} />ALL
+                            </li>
+                            {
+                                selectedMoviesGenre().map((id) => (
+                                    <li>
+                                        <input type="checkbox" onClick={() => handleGenreFilter(id)} />
+                                        <label>{genresIds[id]}</label>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
                 <div className="right-section">
-                    <input type="text" placeholder="Search..." onChange={handleMovieSearch}/>
+                    <input type="text" placeholder="Search..." onChange={handleMovieSearch} />
                     <table border={1} cellPadding={10} cellSpacing={0}>
                         <thead>
                             <tr>

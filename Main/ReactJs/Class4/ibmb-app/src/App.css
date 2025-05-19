@@ -127,5 +127,10 @@
   width : 100%;
 }
 
+.container .left-section .genre-section ul {
+  list-style: none;
+  padding : 0px;
+}
+
 
 
