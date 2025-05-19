@@ -102,5 +102,23 @@
   background-color: cornflowerblue;
 }
 
+.container {
+  display : flex;
+  gap: 1em;
+  padding : 10px 50px;
+}
+
+.container .left-section{
+  width : 40%;
+}
+
+.container .right-section{
+  flex : 1;
+}
+
+.container .right-section table{
+  width : 100%;
+}
+
 
 

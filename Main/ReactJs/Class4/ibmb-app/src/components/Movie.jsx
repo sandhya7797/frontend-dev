@@ -1,7 +1,8 @@
 import '../App.css';
 const Movie = ({movie, watchList, setWatchList}) => {
     const handleWatchListButton = () => {
-        setWatchList([...watchList, { id: movie.id, title: movie.title}]);
+        console.log(watchList);;
+        setWatchList([...watchList, { id: movie.id, movie: movie }]);
     }
     return (
         <div className="movie">
