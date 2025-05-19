@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import '../App.css';
 
 const genresIds = {
@@ -23,21 +24,35 @@ const genresIds = {
 };
 
 const WatchList = ({ watchList, setWatchList }) => {
+    const [list, setList] = useState([]);
 
-    console.log(watchList);
-
+    // remove the movie from the watchList
     const handleRemoveFromWatchList = (id) => {
-        // Here we will filter the watchList and remove the movie with the given id
         const updatedWatchList = watchList.filter((movie) => movie.id !== id);
-        // Update the watchList state with the new watchList
         setWatchList(updatedWatchList);
     }
+
+    // handle the search input and filter the movies based on the title
+    // here watchlist is source of truth and we are maintainting the search state in the list
+    // this method will handle the search input when user types in the search box as well as when the user clears the search box
+    const handleMovieSearch = (e) => {
+        const newList = Object.values(watchList).filter((movie) => (movie.movie.title.toLowerCase().includes(e.target.value.toLowerCase())));
+        setList(newList);
+    }
+
+    // for the first time when component mounts we should show all the movies in the watchList
+    // so we will set the list to the watchList 
+    useEffect(() => {
+        setList(Object.values(watchList));
+    },[watchList]);
+
     return (
         <div>
             <h2>Watch List</h2>
             <div className="container">
                 <div className="left-section"></div>
                 <div className="right-section">
+                    <input type="text" placeholder="Search..." onChange={handleMovieSearch}/>
                     <table border={1} cellPadding={10} cellSpacing={0}>
                         <thead>
                             <tr>
@@ -49,7 +64,7 @@ const WatchList = ({ watchList, setWatchList }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {watchList.map((movie) => (
+                            {list.map((movie) => (
                                 <tr>
                                     <td>{movie.id}</td>
                                     <td><img src={`https://image.tmdb.org/t/p/w500${movie.movie.poster_path}`} alt={movie.title} height={'50px'} /></td>
