@@ -23,6 +23,8 @@ const genresIds = {
     37: 'Western',
 };
 
+//Note : watchlist is just used to copy the data from the watchList to the list and we are dispalying results of search data by iterating over the list (local copy of watchList) and not the watchList directly.
+
 const WatchList = ({ watchList, setWatchList }) => {
     const [list, setList] = useState([]);
 
@@ -46,6 +48,11 @@ const WatchList = ({ watchList, setWatchList }) => {
         setList(Object.values(watchList));
     },[watchList]);
 
+    const handleSorting = (type) => {
+        const sortedList = Object.values(watchList).sort((a, b) => type === 'ASC' ? a.movie.popularity - b.movie.popularity : b.movie.popularity - a.movie.popularity);
+        setList(sortedList);
+    }
+
     return (
         <div>
             <h2>Watch List</h2>
@@ -60,7 +67,7 @@ const WatchList = ({ watchList, setWatchList }) => {
                                 <th>Poster</th>
                                 <th>Movie Title</th>
                                 <th>Genres</th>
-                                <th>Popularity</th>
+                                <th>Popularity<span onClick={() => handleSorting('ASC')}>^</span><span onClick={() => handleSorting('DESC')}>v</span></th>
                             </tr>
                         </thead>
                         <tbody>
