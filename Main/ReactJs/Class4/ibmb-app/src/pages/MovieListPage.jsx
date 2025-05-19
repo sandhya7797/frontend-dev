@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 
 
-const MovieListPage = () => {
+const MovieListPage = ({watchList, setWatchList}) => {
     const [movies, setMovies] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
 
@@ -24,7 +24,7 @@ const MovieListPage = () => {
     // Pagination component to handle pagination. The fetchMovies function is passed as a prop to the Pagination component. so that it can be called when the user clicks on a page number.
     return (
         <div className="movie-list-page">
-            <MovieList movies={movies} />
+            <MovieList movies={movies} watchList={watchList} setWatchList={setWatchList}/>
             <Pagination fetchMovies={fetchMovies} totalPages={20}/>
         </div>
     );
