@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import '../App.css';
+import { WatchListContext } from '../contexts/WatchListContext';
 
 //Note : here watchlist is just used to copy the data from the watchList to the list and we are dispalying results of search data by iterating over the list (local copy of WatchListPage) and not the watchList directly.
 
@@ -25,8 +26,10 @@ const genresIds = {
     37: 'Western',
 };
 
-const WatchList = ({ watchList, setWatchList }) => {
+const WatchList = () => {
     const [list, setList] = useState([]);//local copy of watchList to display the results of search,sort or filtered data
+    const WatchListContextData = useContext(WatchListContext);
+    const { watchList, setWatchList } = WatchListContextData;
 
     // Remove movie from watchlist
     const handleRemoveFromWatchList = (id) => {

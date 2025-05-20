@@ -1,13 +1,13 @@
 import Movie from "./Movie";
 import '../App.css';
 
-const MovieList = ({movies, watchList, setWatchList}) => {
+const MovieList = ({movies}) => {
     return (
         <div className="movie-list">
             <ul>
                 {movies.map((movie) => (
                     <li key={movie.id}>
-                        <Movie movie={movie} watchList={watchList} setWatchList={setWatchList}/>
+                        <Movie movie={movie} />
                     </li>
                 ))}
             </ul>

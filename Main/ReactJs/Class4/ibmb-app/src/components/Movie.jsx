@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import '../App.css';
-const Movie = ({movie, watchList, setWatchList}) => {
+import { WatchListContext } from '../contexts/WatchListContext';
+
+const Movie = ({movie}) => {
+    const WatchListContextData = useContext(WatchListContext);
+    const { watchList, setWatchList } = WatchListContextData;
     const handleWatchListButton = () => {
-        console.log(watchList);;
         setWatchList([...watchList, { id: movie.id, movie: movie }]);
     }
     return (
