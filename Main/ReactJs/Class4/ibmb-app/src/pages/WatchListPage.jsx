@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import '../App.css';
-import { WatchListContext } from '../contexts/WatchListContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWatchList } from '../store/WatchListStore';
 
 //Note : here watchlist is just used to copy the data from the watchList to the list and we are dispalying results of search data by iterating over the list (local copy of WatchListPage) and not the watchList directly.
 
@@ -28,13 +29,13 @@ const genresIds = {
 
 const WatchList = () => {
     const [list, setList] = useState([]);//local copy of watchList to display the results of search,sort or filtered data
-    const WatchListContextData = useContext(WatchListContext);
-    const { watchList, setWatchList } = WatchListContextData;
+    const watchList = useSelector((state) => state.watchlist);
+    const dispatch = useDispatch();
 
     // Remove movie from watchlist
     const handleRemoveFromWatchList = (id) => {
-        const updatedWatchList = watchList.filter((movie) => movie.id !== id);
-        setWatchList(updatedWatchList);
+        const updatedWatchList = Object.values(watchList).filter((movie) => movie.id !== id);
+        dispatch(setWatchList({...updatedWatchList}));
     }
 
     // Searching - Handles search input and filters movies by title; watchList is the source of truth and list holds the filtered state for both typing and clearing the search box.

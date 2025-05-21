@@ -7,7 +7,6 @@ import MovieListPage from './pages/MovieListPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import WatchListPage from './pages/WatchListPage';
 import Header from './components/Header';
-import WatchListProvider from './contexts/WatchListContext';
 
 function App() {
   //BrowserRouter is used to enable routing in the application.
@@ -16,7 +15,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <WatchListProvider>
           <StrictMode>
             <Header />
             <Routes>
@@ -26,7 +24,6 @@ function App() {
               <Route path="*" element={"Page Not Found"} />
             </Routes>
           </StrictMode>
-        </WatchListProvider>
       </BrowserRouter>
     </div>
   )
