@@ -9,12 +9,12 @@ export const watchListSlice = createSlice({
         setWatchList: (state, action) => {
             return action.payload; // Replace the watchlist with the new array
         },
-        addToWatchList: (state, action) => {
-            state.push(action.payload); // Add a new movie object
-        },
-        removeFromWatchList: (state, action) => {
-            return state.filter(item => item.id !== action.payload); // Remove by id
-        },
+        // addToWatchList: (state, action) => {
+        //     state.push(action.payload); // Add a new movie object
+        // },
+        // removeFromWatchList: (state, action) => {
+        //     return state.filter(item => item.id !== action.payload); // Remove by id
+        // },
     },
 })
 
