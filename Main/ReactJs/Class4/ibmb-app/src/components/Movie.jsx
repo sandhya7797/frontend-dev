@@ -6,6 +6,7 @@ import { setWatchList } from '../store/WatchListStore';
 const Movie = ({ movie }) => {
     const watchList = useSelector((state) => state.watchlist);
     const dispatch = useDispatch();
+
     const handleWatchListButton = () => {
         const list = Object.values(watchList);
         const isMovieInWatchList = list.some(item => item.id === movie.id);

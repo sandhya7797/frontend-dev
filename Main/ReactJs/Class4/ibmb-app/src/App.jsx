@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import MovieListPage from './pages/MovieListPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import WatchListPage from './pages/WatchListPage';
-import Header from './components/Header';
+import Header from './components/header.jsx';
 
 function App() {
   //BrowserRouter is used to enable routing in the application.

@@ -1,7 +1,10 @@
 import Movie from "./Movie";
 import '../App.css';
+import { use } from "react";
+import { useSelector } from "react-redux";
 
-const MovieList = ({movies}) => {
+const MovieList = () => {
+    const movies = useSelector((state) => state.movielist.movies);
     return (
         <div className="movie-list">
             <ul>
