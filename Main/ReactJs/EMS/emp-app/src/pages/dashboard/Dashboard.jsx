@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Dashboard.css"
+import { API_BASE_URL } from "../../config";
 
 const Dashboard = () => {
 
@@ -9,7 +10,7 @@ const Dashboard = () => {
     useEffect( () => {
         const fetchEmployees = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/employees", {
+                const response = await fetch(`${API_BASE_URL}/employees`, {
                     method : "GET",
                     headers : {
                         "Content-Type" :"application/json"
@@ -46,7 +47,7 @@ const Dashboard = () => {
         };
 
         try {
-            const response = await fetch(`http://localhost:8080/api/employees/update/${currentEmployee.id}`, {
+            const response = await fetch(`${API_BASE_URL}/employees/update/${currentEmployee.id}`, {
             method:"PUT",
             headers: {
                 "Content-Type":"application/json"
@@ -69,7 +70,7 @@ const Dashboard = () => {
 
     const handleOnDeleteButton = async (currentEmployee) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/employees/delete/${currentEmployee.id}`, {
+            const response = await fetch(`${API_BASE_URL}/employees/delete/${currentEmployee.id}`, {
             method:"DELETE",
             headers: {
                 "Content-Type":"application/json"

@@ -1,0 +1,1 @@
+export const API_BASE_URL = "https://82sov1btte.execute-api.us-west-1.amazonaws.com/test/api";

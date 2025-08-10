@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PostUser.css"
+import { API_BASE_URL } from '../../config';
 
 /* after clicking on submit it should redirect to dashboard page */
 
@@ -32,7 +33,7 @@ const PostUser = () => {
             return;
         }
         try {
-            const response = await fetch("http://localhost:8080/api/employees/create", {
+            const response = await fetch(`${API_BASE_URL}/employees/create`, {
                 method : "POST",
                 headers : {
                     "Content-Type":"application/json"
